@@ -1,0 +1,44 @@
+# Copyright 2021 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+runtime: python
+env: flex
+
+# Use a uvicorn to support websockets.
+entrypoint: uvicorn main:app --host 0.0.0.0 --port $PORT
+
+runtime_config:
+  operating_system: "ubuntu22"
+  runtime_version: "3.12"
+
+# Use only a single instance, so that this local-memory-only chat app will work
+# consistently with multiple users. To work across multiple instances, an
+# extra-instance messaging system or data store would be needed.
+manual_scaling:
+  instances: 1
+
+
+# For applications which can take advantage of session affinity
+# (where the load balancer will attempt to route multiple connections from
+# the same user to the same App Engine instance), uncomment the folowing:
+
+# network:
+#   session_affinity: true
+
+includes:
+  - env_variables.yaml
+
+# Update with Serverless VPC Access connector details
+vpc_access_connector:
+  name: 'projects/leafy-bulwark-440510-d5/locations/europe-west1/connectors/app-redis-connector'

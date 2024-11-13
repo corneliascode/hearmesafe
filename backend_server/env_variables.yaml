@@ -1,0 +1,7 @@
+env_variables:
+  JWT_SECRET_KEY: 'xxx'
+  REDISHOST: 'xxx'
+  REDISPORT: 'xxx'
+  GEMINI_API_KEY: "xxx"
+  SENDGRID_API_KEY: "xxx"
+  SENDGRID_SENDER: "xxx@xxx.com"
