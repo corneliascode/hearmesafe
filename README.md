@@ -110,11 +110,10 @@ HearMeSafe leverages a range of technologies to achieve its goals, including the
 
 
 ## How to Compile the Flutter App
-To compile the Flutter app, please follow the detailed instructions provided in the specific README file from the mobile app folder.  
-(The already compiled app is available on Android Google Store HERE).
+To compile the Flutter app, please follow the detailed instructions provided in the specific README file from the mobile app folder. The compiled app is available here on git
 
 ## How to put the backend part to Google Cloud
-To recreate the functionality of the server side, you need to follow the steps from the README file in the backend folder.
+To recreate the functionality of the server side, used the file in the backend folder.
 
 
 # Contributors
