@@ -1,29 +1,30 @@
-# hear_me_app
+# HearMeSafe 🛡️
 
-A new Flutter project.
+## What is HearMeSafe?
 
-## Getting Started
+**HearMeSafe** is a Flutter app that listens for distress signals in your voice, analyzes them, and checks if you’re in danger. If something’s off, it alerts a trusted contact with your location — but only if you don’t stop it first.
 
-This project is a starting point for a Flutter application that follows the
-[simple app state management
-tutorial](https://flutter.dev/to/state-management-sample).
+## How It Works 🚨
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+1. **Voice Analysis**  
+   HearMeSafe uses **MediaPipe** to analyze your voice/audio files and classify it.
 
-## Assets
+2. **Danger Detection**  
+   The app sends your GPS location, audio, and classification labels to a **FastAPI server**.
 
-The `assets` directory houses images, fonts, and any other files you want to
-include with your application.
+3. **Threat Mode**  
+   If danger is detected, the server sends a message via **WebSocket** to the app:  
+   - A **10-second countdown** starts, with your phone buzzing 3 times to alert you.  
+   - You can cancel the alert at any time during or after the countdown.
 
-The `assets/images` directory contains [resolution-aware
-images](https://flutter.dev/to/resolution-aware-images).
+4. **Alert Delivery**  
+   If the alert isn’t canceled, an **email** with your exact GPS location is sent to your trusted contact.
 
-## Localization
+5. **Always On**  
+   The app works in both **foreground** and **background**, so it’s always listening and ready to help.
 
-This project generates localized messages based on arb files found in
-the `lib/src/localization` directory.
+## Built With ❤️
 
-To support additional languages, please visit the tutorial on
-[Internationalizing Flutter apps](https://flutter.dev/to/internationalization).
+- **Flutter**: For a smooth cross-platform experience.  
+- **MediaPipe**: Handles audio classification.  
+- **WebSockets**: Enables instant communication between app and server.
